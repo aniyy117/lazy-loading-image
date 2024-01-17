@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+.image-container {
+  background-color: #ccc;
+  overflow: hidden;
+  position: relative;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.remove-bg-color{
+  background-color: transparent;
+  transition: all 1s ease-in-out;
+}
+
+
+.image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  object-fit: contain;
+}
+
+.thumb {
+  opacity: 1;
+  filter: blur(10px);
+  transition: opacity 1s ease-in-out;
+  position: absolute;
+}
+
+.isLoaded-thumb {
+  opacity: 0;
+}
+
+.isLoaded-original {
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+}
