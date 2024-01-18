@@ -2,7 +2,7 @@ import ImageRenderer from "@/components/ImageRenderer";
 
 async function getData() {
   const res = await fetch(
-    "https://picsum.photos/v2/list?page=2&limit=100&height=200"
+    "https://picsum.photos/v2/list?page=1&limit=100&height=200"
   );
 
   return res.json();
