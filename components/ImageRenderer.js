@@ -1,3 +1,5 @@
+"use client";
+
 import { useIntersection } from "@/helper/hooks/intersectionObserver";
 import React, { useState, useRef } from "react";
 
@@ -24,7 +26,7 @@ const ImageRenderer = ({ url, thumb, width, height }) => {
   // JSX structure for the ImageRenderer component
   return (
     <div
-      className={`image-container ${isLoaded && "remove-bg-color"}`}
+      className={`image-container px-4 ${isLoaded && "remove-bg-color"}`}
       ref={imgRef}
       style={{
         paddingBottom: `${(height / width) * 100}%`,

@@ -1,17 +1,15 @@
-"use client";
-
 import ImageRenderer from "@/components/ImageRenderer";
-import { useEffect, useState } from "react";
 
-export default function Home() {
-  const [photos, setPhotos] = useState(null);
+async function getData() {
+  const res = await fetch(
+    "https://picsum.photos/v2/list?page=2&limit=100&height=200"
+  );
 
-  useEffect(() => {
-    fetch("https://picsum.photos/v2/list?page=2&limit=100&height=200")
-      .then((res) => res.json())
-      .then((data) => setPhotos(data));
-  }, []);
+  return res.json();
+}
 
+export default async function Home() {
+  const photos = await getData();
 
   return (
     <main>
@@ -27,14 +25,15 @@ export default function Home() {
         ))} */}
       {photos &&
         photos.map((data) => (
-          <ImageRenderer
-            key={data.id}
-            url={data.download_url}
-            thumb={data.download_url}
-            // thumb={"/loading.webp"}
-            width={300}
-            height={100}
-          />
+          <div className="flex mx-10" key={data.id}>
+            <ImageRenderer
+              url={data.download_url}
+              thumb={data.download_url}
+              // thumb={"/loading.webp"}
+              width={300}
+              height={100}
+            />
+          </div>
         ))}
     </main>
   );
