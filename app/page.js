@@ -31,6 +31,7 @@ export default function Home() {
             key={data.id}
             url={data.download_url}
             thumb={data.download_url}
+            // thumb={"/loading.webp"}
             width={300}
             height={100}
           />
